@@ -1,5 +1,5 @@
 # 0x00. AirBnB clone - The console
-# #Group project #Python #OOP
+#Group project #Python #OOP
 
 # Description of the project
 The console project is the first part of our "AirBnB clone" project.
