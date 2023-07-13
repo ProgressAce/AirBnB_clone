@@ -40,7 +40,7 @@ class HBNBCommand(cmd.Cmd):
         """
         if not arg:
             print("** class name missing **")
-        elif arg == BaseModel:
+        elif arg == "BaseModel":
             pass  # do later
         else:
             print("** class doesn't exist **")
@@ -52,6 +52,80 @@ class HBNBCommand(cmd.Cmd):
             '\nExample:\n',
             '\n$ create BaseModeli\n'
         ]))
+
+    def do_show(self, arg):
+        """Prints the string representation of an instance
+        based on the class name and id.
+        Ex: $ show BaseModel 1234-1234-1234
+        """
+        arg_list = arg.split()
+        if not arg_list:
+            print("** class name missing **")
+        elif arg_list[0] != "BaseModel":
+            print("class doesn't exist")
+        elif len(arg_list) == 1:
+            print("** instance id missing *")
+        elif arg_list[1] != "1234":  # iplement later
+            print("** no instance found **")
+        else:
+            pass  # implement show action later
+
+    def do_destroy(self, arg):
+        """Deletes an instance based on the class name and id
+        (save the change into the JSON file).
+
+        Ex: $ destroy BaseModel 1234-1234-1234
+        """
+        arg_list = arg.split()
+        if not arg_list:
+            print("** class name missing **")
+        elif arg_list[0] != "BaseModel":
+            print("class doesn't exist")
+        elif len(arg_list) == 1:
+            print("** instance id missing *")
+        elif arg_list[1] != "1234":  # iplement later
+            print("** no instance found **")
+        else:
+            pass  # implement show action later
+
+    def do_all(self, arg):
+        """Prints all string representation of all instances
+        based or not on the class name.
+        The printed result is a list of strings
+
+        Ex: $ all BaseModel or $ all.
+        """
+        arg_list = arg.split()
+        if not arg_list:
+            print("string representation of all instances (list)")
+        elif arg_list[0] != "BaseModel":
+            print("** class doesn't exist *")
+        else:
+            print("str repre. of all inst. of a part. class (list)")
+
+    def do_update(self, arg):
+        """Updates an instance based on the class name and id
+        by adding or updating attribute (save the change into the JSON file).
+
+        Usage: update <class name> <id> <attribute name> "<attribute value>"
+
+        Ex: $ update BaseModel 1234-1234-1234 email "aibnb@mail.com"
+        """
+        arg_list = arg.split()
+        if not arg_list:
+            print("** class name missing **")
+        elif arg_list[0] != "BaseModel":
+            print("class doesn't exist")
+        elif len(arg_list) == 1:
+            print("** instance id missing *")
+        elif arg_list[1] != "1234":  # iplement later
+            print("** no instance found **")
+        elif len(arg_list) == 2:
+            print("** attribute name missing *")
+        elif len(arg_list) == 3:
+            print("** value missing *")
+        else:
+            pass  # implement valid update action later
 
 
 if __name__ == '__main__':
