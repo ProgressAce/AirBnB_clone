@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 import cmd
+# from models import storage
+# uncomment storage import once its available
+from models.base_model import BaseModel
 """This is the Console
 
 The command line interpreter for our AirBnB clone
@@ -28,6 +31,26 @@ class HBNBCommand(cmd.Cmd):
         print(''.join([
            'List available commands with "help"',
            ' or detailed help with "help hbnb".\n'
+        ]))
+
+    def do_create(self, arg):
+        """Creates a new instance of BaseModel
+        saves it (to the JSON file) and prints the id.
+        Ex: $ create BaseModel
+        """
+        if not arg:
+            print("** class name missing **")
+        elif arg == BaseModel:
+            pass  # do later
+        else:
+            print("** class doesn't exist **")
+
+    def help_create(self):
+        print(''.join([
+            'Creates a new instance of BaseModel, ',
+            'saves it (to the JSON file) and prints the id.\n',
+            '\nExample:\n',
+            '\n$ create BaseModeli\n'
         ]))
 
 
