@@ -13,17 +13,6 @@ class BaseModel():
     """
 
     def __init__(self, *args, **kwargs):
-        """Initializes a BaseModel object
-        """
-#        self.id = str(uuid.uuid4())
-        """str: Unique id for each BaseModel"""
-#        self.created_at = datetime.now()
-        """datetime: Current datetime when an instance is created"""
-#        self.updated_at = self.created_at
-        """datetime: Current datetime when an instance is created,
-        updated everytime the object is changed
-        """
-
         """
         Initialising BaseModel instance.
 
@@ -36,8 +25,13 @@ class BaseModel():
 
         if len(kwargs) == 0:
             self.id = str(uuid.uuid4())
+            """str: Unique id for each BaseModel"""
             self.created_at = datetime.now()
+            """datetime: Current datetime when an instance is created"""
             self.updated_at = self.created_at
+            """datetime: Current datetime when an instance is created,
+            updated everytime the object is changed
+            """
         else:
             for key, value in kwargs.items():
                 if key == '__class__':
@@ -72,8 +66,3 @@ class BaseModel():
         new_dict["created_at"] = self.created_at.isoformat()
         new_dict["updated_at"] = self.updated_at.isoformat()
         return new_dict
-
-
-if __name__ == "__main__":
-    b1 = BaseModel()
-    print(b1)
