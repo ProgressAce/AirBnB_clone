@@ -1,20 +1,17 @@
 #!/usr/bin/python3
-import uuid
-from datetime import datetime
 """Defines BaseModel class which acts as a base for other classes.
 """
+import uuid
+from datetime import datetime
 
 
 class BaseModel():
     """
-    BaseModel class
-
-    BaseModel defines all common attributes/methods for other classes
+    BaseModel defines all common attributes/methods for other classes.
     """
 
     def __init__(self, *args, **kwargs):
-        """
-        Initialising BaseModel instance.
+        """Initializes a BaseModel object.
 
         kwargs is used to define new attributes for an instance.
         When kwargs is empty, the base attributes will be defined.
@@ -23,15 +20,13 @@ class BaseModel():
             **kwargs: dictionary for defining new attributes.
         """
 
+        from models import storage
+
         if len(kwargs) == 0:
             self.id = str(uuid.uuid4())
-            """str: Unique id for each BaseModel"""
             self.created_at = datetime.now()
-            """datetime: Current datetime when an instance is created"""
             self.updated_at = self.created_at
-            """datetime: Current datetime when an instance is created,
-            updated everytime the object is changed
-            """
+            storage.new(self)  # new instances are stored to storage in memory
         else:
             for key, value in kwargs.items():
                 if key == '__class__':
@@ -48,8 +43,9 @@ class BaseModel():
     def save(self):
         """Updates the updated_at attribute with the current datetime
         """
-
+        from models import storage
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """returns a dictionary of all keys/values of __dict__ of the instance
