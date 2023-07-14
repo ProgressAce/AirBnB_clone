@@ -1,8 +1,8 @@
 #!/usr/bin/python3
+"""Tests the BaseModel class"""
 import unittest
 from datetime import datetime
 from models.base_model import BaseModel
-"""Tests the BaseModel class"""
 
 
 class TestBaseModel(unittest.TestCase):
@@ -87,6 +87,7 @@ class TestBaseModel(unittest.TestCase):
         # check for datetime objects
         self.assertEqual(type(self.new_base.created_at), datetime)
         self.assertEqual(type(self.new_base.updated_at), datetime)
+
 
 if __name__ == "__main__":
     unittest.main()
