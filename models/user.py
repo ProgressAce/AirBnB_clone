@@ -2,7 +2,7 @@
 """Defines a class for a User."""
 from models.base_model import BaseModel
 import models
-import uuid
+
 
 
 
