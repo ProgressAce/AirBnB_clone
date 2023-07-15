@@ -67,8 +67,11 @@ class HBNBCommand(cmd.Cmd):
             print("class doesn't exist")
         elif len(arg_list) == 1:
             print("** instance id missing *")
-        elif arg_list[1] != "1234":  # iplement later
+        elif f'{"BaseModel"}.{arg_list[1]}' not in all_objs:
             print("** no instance found **")
+        elif f'{"BaseModel"}.{arg_list[1]}' in all_objs:
+            key =  f'{"BaseModel"}.{arg_list[1]}'
+            print(key)
         else:
             pass  # implement show action later
 
