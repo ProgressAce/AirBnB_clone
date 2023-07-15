@@ -1,9 +1,12 @@
 #!/usr/bin/python3
 """Defines a class for storing objects to a json file."""
 from models.base_model import BaseModel
+from models.user import User
 import json
 import os
 
+
+classes = {'BaseModel': BaseModel, 'User': User}
 
 class FileStorage:
     """Representation of storing objects to a file and receiving it.
@@ -62,6 +65,6 @@ class FileStorage:
 
                 # convert the json_dict values back to BaseModel objects.
                 for key, value in json_dict.items():
-                    self.__objects[key] = BaseModel(**value)
+                    self.__objects[key] = classes[value['__class__']](**value)
         else:
             pass
