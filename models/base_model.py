@@ -28,7 +28,6 @@ class BaseModel():
             models.storage.new(self)
             # new instances are stored to storage in memory
         else:
-
             for key, value in kwargs.items():
                 if key == '__class__':
                     continue
