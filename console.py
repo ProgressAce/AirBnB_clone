@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-import cmd
-import models
-from models.base_model import BaseModel
 """This is the Console
 
 The command line interpreter for our AirBnB clone
 """
+import cmd
+import models
+from models.base_model import BaseModel
 all_objs = models.storage.all()
 
 
