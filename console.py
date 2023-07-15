@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 import cmd
-# from models import storage
-# uncomment storage import once its available
+import models
 from models.base_model import BaseModel
 """This is the Console
 
 The command line interpreter for our AirBnB clone
 """
+all_objs = models.storage.all()
 
 
 class HBNBCommand(cmd.Cmd):
@@ -41,7 +41,9 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
         elif arg == "BaseModel":
-            pass  # do later
+            self.new_base = BaseModel()
+            self.newbase.save()
+            print(self.new_base.id)
         else:
             print("** class doesn't exist **")
 
