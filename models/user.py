@@ -3,7 +3,7 @@
 from models.base_model import BaseModel
 import models
 import uuid
-from datetime import datetime
+
 
 
 class User(BaseModel):
