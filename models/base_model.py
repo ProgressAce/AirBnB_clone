@@ -36,7 +36,6 @@ class BaseModel():
                     value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
                 setattr(self, key, value)
 
-
     def __str__(self):
         """should print: [<class name>] (<self.id>) <self.__dict__>"""
         return ("[{}] ({}) {}".format(self.__class__.__name__, self.id,
