@@ -28,13 +28,14 @@ class BaseModel():
             models.storage.new(self)
             # new instances are stored to storage in memory
         else:
+            print(kwargs)
             for key, value in kwargs.items():
                 if key == '__class__':
                     continue
                 if key == 'created_at' or key == 'updated_at':
                     value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
                 setattr(self, key, value)
-                print(self.__dict__)
+            print(self.__class__.__name__)
 
     def __str__(self):
         """should print: [<class name>] (<self.id>) <self.__dict__>"""
