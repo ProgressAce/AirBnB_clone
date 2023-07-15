@@ -34,6 +34,7 @@ class BaseModel():
                 if key == 'created_at' or key == 'updated_at':
                     value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
                 setattr(self, key, value)
+                print(self.__dict__)
 
     def __str__(self):
         """should print: [<class name>] (<self.id>) <self.__dict__>"""
