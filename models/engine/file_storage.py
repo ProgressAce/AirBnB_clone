@@ -32,6 +32,7 @@ class FileStorage:
             raise AttributeError
         key = f'{obj.__class__.__name__}.{obj.id}'
         self.__objects[key] = obj
+        print(type(self.__objects[key]))
 
     def save(self):
         """Serialises all the objects from __objects into a json file.
