@@ -102,11 +102,14 @@ class HBNBCommand(cmd.Cmd):
         """
         arg_list = arg.split()
         if not arg_list:
-            print("string representation of all instances (list)")
+            all_list = [str(all_objs[key]) for key in all_objs]
+            print(all_list)
         elif arg_list[0] != "BaseModel":
             print("** class doesn't exist *")
         else:
-            print("str repre. of all inst. of a part. class (list)")
+            all_list = [str(all_objs[key]) for key in all_objs if "BaseModel"
+                        in key]
+            print(all_list)
 
     def do_update(self, arg):
         """Updates an instance based on the class name and id
@@ -123,14 +126,20 @@ class HBNBCommand(cmd.Cmd):
             print("class doesn't exist")
         elif len(arg_list) == 1:
             print("** instance id missing *")
-        elif arg_list[1] != "1234":  # iplement later
+        elif f'{arg_list[0]}.{arg_list[1]}' not in all_objs:
             print("** no instance found **")
         elif len(arg_list) == 2:
             print("** attribute name missing *")
         elif len(arg_list) == 3:
             print("** value missing *")
         else:
-            pass  # implement valid update action later
+            key = f'{arg_list[0]}.{arg_list[1]}'
+            print(all_objs[key].updated_at)
+            value = arg_list[3].strip('"')
+            att_name = arg_list[2]
+            all_objs[key].__dict__[att_name] = value
+            all_objs[key].save()
+            print(all_objs[key].updated_at)
 
 
 if __name__ == '__main__':
