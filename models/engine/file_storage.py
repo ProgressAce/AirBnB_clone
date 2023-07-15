@@ -5,8 +5,8 @@ from models.user import User
 import json
 import os
 
-
 classes = {'BaseModel': BaseModel, 'User': User}
+
 
 class FileStorage:
     """Representation of storing objects to a file and receiving it.
