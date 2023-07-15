@@ -69,11 +69,9 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing *")
         elif f'{"BaseModel"}.{arg_list[1]}' not in all_objs:
             print("** no instance found **")
-        elif f'{"BaseModel"}.{arg_list[1]}' in all_objs:
-            key =  f'{"BaseModel"}.{arg_list[1]}'
-            print(key)
         else:
-            pass  # implement show action later
+            key = f'{"BaseModel"}.{arg_list[1]}'
+            print(all_objs[key])
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id
@@ -88,10 +86,12 @@ class HBNBCommand(cmd.Cmd):
             print("class doesn't exist")
         elif len(arg_list) == 1:
             print("** instance id missing *")
-        elif arg_list[1] != "1234":  # iplement later
+        elif f'{arg_list[0]}.{arg_list[1]}' not in all_objs:
             print("** no instance found **")
         else:
-            pass  # implement show action later
+            key = f'{arg_list[0]}.{arg_list[1]}'
+            del all_objs[key]
+            models.storage.save()
 
     def do_all(self, arg):
         """Prints all string representation of all instances
