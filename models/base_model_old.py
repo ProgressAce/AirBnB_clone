@@ -3,7 +3,6 @@
 """
 import uuid
 from datetime import datetime
-import models
 
 
 class BaseModel():
@@ -21,12 +20,13 @@ class BaseModel():
             **kwargs: dictionary for defining new attributes.
         """
 
+        from models import storage
+
         if len(kwargs) == 0:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = self.created_at
-            models.storage.new(self)
-            # new instances are stored to storage in memory
+            storage.new(self)  # new instances are stored to storage in memory
         else:
             for key, value in kwargs.items():
                 if key == '__class__':
@@ -43,8 +43,9 @@ class BaseModel():
     def save(self):
         """Updates the updated_at attribute with the current datetime
         """
+        from models import storage
         self.updated_at = datetime.now()
-        models.storage.save()
+        storage.save()
 
     def to_dict(self):
         """returns a dictionary of all keys/values of __dict__ of the instance
