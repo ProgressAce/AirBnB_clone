@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Unittests for the User class."""
 import unittest
+import models
 from datetime import datetime
 from models.user import User
 from models.base_model import BaseModel
@@ -39,6 +40,9 @@ class TestUser(unittest.TestCase):
         """This inherited method should update updated_at with current datetime."""
 
         previous_date = self.user.updated_at
+        user_key = f'{self.user.__class__.__name__}.{self.user.id}'
+        del models.storage._FileStorage__objects[user_key]
+
         self.user.save()
         self.assertNotEqual(self.user.updated_at, previous_date)
 
