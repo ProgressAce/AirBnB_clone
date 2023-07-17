@@ -101,6 +101,17 @@ class TestFileStorage(unittest.TestCase):
         self.file_storage.save()
         self.assertNotEqual(os.path.getsize(path), 0)
 
+    def test_save_method_file_has_text(self):
+        """Test that file has a particular text after calling save"""
+        path = self.file_storage._FileStorage__file_path
+        nb = BaseModel()
+        nb.latest1001 = '1001'
+        self.file_storage.save()
+        self.assertNotEqual(os.path.getsize(path), 0)
+        with open(path, 'r', encoding="utf-8") as f:
+            text = f.read()
+            self.assertIn("latest1001", text)
+
     def test_reload_method_file_not_found(self):
         """Test that nothing happens, should the file not be found."""
 
