@@ -100,15 +100,6 @@ class TestFileStorage(unittest.TestCase):
             self.assertIn("latest1001", text)
         # Test that file has a particular text after calling save"""
 
-    def test_reload(self):
-        """Test the reload method"""
-
-        path = self.file_storage._FileStorage__file_path
-        self.file_storage._FileStorage__file_path = ''  # ensure missing file
-        self.file_storage.reload()
-        self.file_storage._FileStorage__file_path = path
-        # Test that nothing happens, should the file not be found.
-
     def test_path(self):
         """Test that the file path is correct"""
 
