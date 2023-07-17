@@ -100,13 +100,22 @@ class TestFileStorage(unittest.TestCase):
             self.assertIn("latest1001", text)
         # Test that file has a particular text after calling save"""
 
-    def test_reload_method_file_not_found(self):
-        """Test that nothing happens, should the file not be found."""
+    def test_reload(self):
+        """Test the reload method"""
 
         path = self.file_storage._FileStorage__file_path
         self.file_storage._FileStorage__file_path = ''  # ensure missing file
         self.file_storage.reload()
         self.file_storage._FileStorage__file_path = path
+        # Test that nothing happens, should the file not be found.
+
+        nb = BaseModel()
+        nb.save()
+        self.file_storage.reload()
+        all_objs = self.file_storage.all()
+        self.assertNotEqual(len(all_objs), 0)
+        # test that dic of all objects is not empty after saving an object and
+        # reloading
 
         # test for existing, but empty json file.
 
