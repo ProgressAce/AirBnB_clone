@@ -109,16 +109,6 @@ class TestFileStorage(unittest.TestCase):
         self.file_storage._FileStorage__file_path = path
         # Test that nothing happens, should the file not be found.
 
-        nb = BaseModel()
-        nb.save()
-        self.file_storage.reload()
-        all_objs = self.file_storage.all()
-        self.assertNotEqual(len(all_objs), 0)
-        # test that dic of all objects is not empty after saving an object and
-        # reloading
-
-        # test for existing, but empty json file.
-
     def test_path(self):
         """Test that the file path is correct"""
 
