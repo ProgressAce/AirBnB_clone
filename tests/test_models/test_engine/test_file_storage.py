@@ -103,3 +103,10 @@ class TestFileStorage(unittest.TestCase):
         self.file_storage._FileStorage__file_path = path
 
         # test for existing, but empty json file.
+
+    def test_path(self):
+        """Test that the file path is correct"""
+
+        path = self.file_storage._FileStorage__file_path
+        self.assertEqual(path, "file.json")
+        self.assertEqual(type(path), str)
