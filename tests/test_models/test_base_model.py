@@ -35,7 +35,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertIn("updated_at", self.base1.__dict__)
         self.assertIs(type(self.base1.updated_at), datetime)
 
-    def test_save(self):
+    def test_save_method(self):
         """Test that the method updates the created_at attribute"""
         up1 = self.base2.updated_at
         self.base2.save()
