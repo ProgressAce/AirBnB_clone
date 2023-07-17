@@ -85,32 +85,20 @@ class TestFileStorage(unittest.TestCase):
 
         self.assertFalse(isinstance(dict(), BaseModel))
 
-    def test_save_method_file_not_found(self):
-        """Test that save() continues to serialize even if file is not found.
-        """
-        pass
-
-    def test_save_method_empty_objects(self):
-        """Test that save() serializes even if __objects is found empty.
-        """
-        pass
-
-    def test_save_method_file_not_empty(self):
-        """Test that file is not empty after calling save"""
+    def test_save(self):
+        """Test save method"""
         path = self.file_storage._FileStorage__file_path
         self.file_storage.save()
         self.assertNotEqual(os.path.getsize(path), 0)
+        # Test that file is not empty after calling save"""
 
-    def test_save_method_file_has_text(self):
-        """Test that file has a particular text after calling save"""
-        path = self.file_storage._FileStorage__file_path
         nb = BaseModel()
         nb.latest1001 = '1001'
         self.file_storage.save()
-        self.assertNotEqual(os.path.getsize(path), 0)
         with open(path, 'r', encoding="utf-8") as f:
             text = f.read()
             self.assertIn("latest1001", text)
+        # Test that file has a particular text after calling save"""
 
     def test_reload_method_file_not_found(self):
         """Test that nothing happens, should the file not be found."""
