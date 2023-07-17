@@ -71,9 +71,9 @@ class HBNBCommand(cmd.Cmd):
         if not arg_list:
             print("** class name missing **")
         elif arg_list[0] not in classes:
-            print("class doesn't exist")
+            print("** class doesn't exist **")
         elif len(arg_list) == 1:
-            print("** instance id missing *")
+            print("** instance id missing **")
         elif f'{arg_list[0]}.{arg_list[1]}' not in all_objs:
             print("** no instance found **")
         else:
@@ -90,9 +90,9 @@ class HBNBCommand(cmd.Cmd):
         if not arg_list:
             print("** class name missing **")
         elif arg_list[0] not in classes:
-            print("class doesn't exist")
+            print("** class doesn't exist **")
         elif len(arg_list) == 1:
-            print("** instance id missing *")
+            print("** instance id missing **")
         elif f'{arg_list[0]}.{arg_list[1]}' not in all_objs:
             print("** no instance found **")
         else:
@@ -112,7 +112,7 @@ class HBNBCommand(cmd.Cmd):
             all_list = [str(all_objs[key]) for key in all_objs]
             print(all_list)
         elif arg_list[0] not in classes:
-            print("** class doesn't exist *")
+            print("** class doesn't exist **")
         else:
             all_list = [str(all_objs[key]) for key in all_objs if arg_list[0]
                         in key]
@@ -131,15 +131,15 @@ class HBNBCommand(cmd.Cmd):
         if not arg_list:
             print("** class name missing **")
         elif arg_list[0] not in classes:
-            print("class doesn't exist")
+            print("** class doesn't exist **")
         elif len(arg_list) == 1:
-            print("** instance id missing *")
+            print("** instance id missing **")
         elif f'{arg_list[0]}.{arg_list[1]}' not in all_objs:
             print("** no instance found **")
         elif len(arg_list) == 2:
-            print("** attribute name missing *")
+            print("** attribute name missing **")
         elif len(arg_list) == 3:
-            print("** value missing *")
+            print("** value missing **")
         else:
             key = f'{arg_list[0]}.{arg_list[1]}'
             value = arg_list[3].strip('"')
