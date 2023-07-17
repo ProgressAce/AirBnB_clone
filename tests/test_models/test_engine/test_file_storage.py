@@ -72,13 +72,15 @@ class TestFileStorage(unittest.TestCase):
         class Person(BaseModel):
             """Represents a person and there identification."""
 
-            def __init__(self):
-                """Initialising person object."""
-                self.id = 11221122
+            pass
 
         person = Person()
         self.file_storage.new(person)
         self.assertIsInstance(person, BaseModel)
+
+        # delete person key from FileStorage's __objects.
+        person_key = '{}.{}'.format(person.__class__.__name__, person.id)
+        del self.file_storage._FileStorage__objects[person_key]
 
         self.assertFalse(isinstance(dict(), BaseModel))
 
