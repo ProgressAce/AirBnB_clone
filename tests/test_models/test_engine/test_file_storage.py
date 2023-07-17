@@ -3,6 +3,7 @@
 import unittest
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
+import os
 
 
 class TestFileStorage(unittest.TestCase):
@@ -93,6 +94,12 @@ class TestFileStorage(unittest.TestCase):
         """Test that save() serializes even if __objects is found empty.
         """
         pass
+
+    def test_save_method_file_not_empty(self):
+        """Test that file is not empty after calling save"""
+        path = self.file_storage._FileStorage__file_path
+        self.file_storage.save()
+        self.assertNotEqual(os.path.getsize(path), 0)
 
     def test_reload_method_file_not_found(self):
         """Test that nothing happens, should the file not be found."""
